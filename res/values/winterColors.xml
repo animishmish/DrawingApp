@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="winterColors">        
+        <item>#ffffff</item>
+        <item>#ff69b4</item>  
+        <item>#00008b</item>
+        <item>#a52a2a</item>
+        <item>#dda0aa</item>
+        <item>#0000cd</item>
+        <item>#5f9ea0</item>
+        <item>#006400</item>
+        <item>#ff1493</item>
+        <item>#008080</item>
+        <item>#fa8072</item>
+        <item>#0000ff</item>
+    </string-array>
+</resources>
+

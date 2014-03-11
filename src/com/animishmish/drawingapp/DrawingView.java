@@ -2,6 +2,7 @@ package com.animishmish.drawingapp;
 
 import android.content.Context;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
@@ -23,7 +24,7 @@ public class DrawingView extends View {
 	private Path drawPath;
 	//drawing and canvas paint
 	private Paint drawPaint, canvasPaint;
-	// intial color
+	// initial color
 	private int paintColor = 0xFF66000;
 	//canvas
 	private Canvas drawCanvas;
@@ -45,6 +46,8 @@ public class DrawingView extends View {
 	//detect when user touched
 		float touchX = event.getX();
 		float touchY = event.getY();
+		
+		Log.v("DrawingView", ""+touchX+" "+touchY);
 		
 		//define what happens for Press - drag - Release
 		switch (event.getAction()) {
@@ -78,7 +81,13 @@ public class DrawingView extends View {
 		
 		
 		}
-	
+	@Override
+	protected void onDraw(Canvas canvas) {
+		Log.v("DrawingView","onDraw");
+		
+		canvas.drawBitmap(canvasBitmap, 0, 0, canvasPaint);
+		canvas.drawPath(drawPath, drawPaint);
+		}		
 
 	private void setupDrawing() {
 
@@ -133,4 +142,10 @@ public class DrawingView extends View {
 		if(erase) drawPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.CLEAR));
 		else drawPaint.setXfermode(null);
 		}
+
+//Starting a new Drawing
+	public void startNew(){
+		drawCanvas.drawColor(Color.WHITE);
+		invalidate();
+	}
 }
